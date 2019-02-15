@@ -1,14 +1,14 @@
 
-def create_table(df):
+def create_table(df, confounder="z", intervention_level = ["X=0", "X=1"]):
 
     wrap = lambda s, tag, option="": "<" + tag + " " + option + ">" + s + "</" + tag + ">"
     wrap_list = lambda lst, tag: "".join(map(lambda s: wrap(str(s), tag), lst))
 
     table = ""
 
-    table += wrap(wrap("z", "th") + 
-                  wrap("X=0","th","colspan='2'") +
-                  wrap("X=1","th","colspan='2'"), "tr")
+    table += wrap(wrap(confounder, "th") + 
+                  wrap(intervention_level[0],"th","colspan='2'") +
+                  wrap(intervention_level[1],"th","colspan='2'"), "tr")
 
 
 
